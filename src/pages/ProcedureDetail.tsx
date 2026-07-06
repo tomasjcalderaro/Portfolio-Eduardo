@@ -1,8 +1,13 @@
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
+import Modal from "../components/ui/Modal";
+import ContactSection from "../components/forms/ContactSection";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { producers } from "../data/producers";
 
 const ProcedureDetail = () => {
+    const [openContact, setOpenContact] = useState(false);
     const { slug } = useParams();
 
     const procedure = producers.find(
@@ -19,7 +24,9 @@ const ProcedureDetail = () => {
 
     return (
         <>
-        <Navbar />
+        <Navbar
+            onOpenContact={() => setOpenContact(true)}
+        />
 
         <main className="pt-32 pb-20 px-4 bg-gradient-to-b from-white to-soft min-h-screen">
             <div className="max-w-5xl mx-auto">
@@ -168,6 +175,32 @@ const ProcedureDetail = () => {
 
             </div>
         </main>
+
+        <Footer
+            onOpenContact={() => setOpenContact(true)}
+        />
+
+        {openContact && (
+            <Modal
+            onClose={() => setOpenContact(false)}
+            >
+            <div className="text-center">
+
+                <h2 className="text-4xl font-bold mb-3">
+                    Solicitar Consulta
+                </h2>
+
+                <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-6" />
+
+                <p className="text-gray-600 mb-8">
+                    Completá el formulario y nos pondremos en contacto con vos a la brevedad.
+                </p>
+
+                <ContactSection />
+
+            </div>
+            </Modal>
+        )}
         </>
     );
 };

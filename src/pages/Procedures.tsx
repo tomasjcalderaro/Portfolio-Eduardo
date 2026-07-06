@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import Modal from "../components/ui/Modal";
 
 import { producers } from "../data/producers";
@@ -116,6 +117,10 @@ const Procedures = () => {
             </div>
             </section>
         </main>
+
+        <Footer
+            onOpenContact={() => setOpenContact(true)}
+        />
 
         {openContact && (
             <Modal

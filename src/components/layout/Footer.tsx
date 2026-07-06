@@ -8,15 +8,18 @@ import {
     onOpenContact?: () => void;
     };
 
+    const address = "Chacabuco 1289, Santa Fe, Santa Fe";
+    const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+
     const Footer = ({ onOpenContact }: Props) => {
     return (
         <footer
         className="
             mt-24
-            bg-white/70
+            bg-[#062F2C]
             backdrop-blur-md
             border-t
-            border-primary/20
+            border-white/10
         "
         >
         <div
@@ -29,15 +32,69 @@ import {
         >
             {/* Logo y descripción */}
             <div className="mb-12">
-            <h3 className="text-3xl font-bold text-primary">
+            <h3 className="text-3xl font-bold text-white">
                 Dr. Eduardo Argüello
             </h3>
 
-            <p className="text-gray-600 mt-4 max-w-xl leading-relaxed">
+            <p className="text-white/70 mt-4 max-w-xl leading-relaxed">
                 Medicina estética avanzada, tratamientos
                 personalizados y atención profesional
                 orientada a resultados naturales y armónicos.
             </p>
+            </div>
+
+            {/* Ubicación */}
+            <div
+            className="
+                grid
+                gap-6
+                lg:grid-cols-[1fr_0.85fr]
+                items-stretch
+                mb-12
+            "
+            >
+            <div
+                className="
+                rounded-2xl
+                border
+                border-white/10
+                bg-white/5
+                p-6
+                "
+            >
+                <h4 className="text-xl font-semibold text-white">
+                Ubicación
+                </h4>
+
+                <p className="text-white/70 mt-2 leading-relaxed">
+                {address}
+                </p>
+
+                <p className="text-white/60 mt-4 leading-relaxed">
+                Atención personalizada en Santa Fe. Podés ubicar el consultorio
+                desde el mapa y abrirlo directamente para ver el recorrido.
+                </p>
+            </div>
+
+            <div
+                className="
+                overflow-hidden
+                rounded-2xl
+                border
+                border-white/10
+                bg-white/10
+                min-h-[220px]
+                sm:min-h-[260px]
+                "
+            >
+                <iframe
+                title="Mapa de ubicación - Dr. Eduardo Argüello"
+                src={mapsEmbedUrl}
+                className="w-full h-full min-h-[220px] sm:min-h-[260px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                />
+            </div>
             </div>
 
             {/* Redes */}
@@ -53,7 +110,7 @@ import {
                 bg-white
                 rounded-xl
                 shadow-md
-                hover:shadow-xl
+                hover:bg-white/90
                 hover:-translate-y-1
                 transition-all
                 "
@@ -76,7 +133,7 @@ import {
                 bg-white
                 rounded-xl
                 shadow-md
-                hover:shadow-xl
+                hover:bg-white/90
                 hover:-translate-y-1
                 transition-all
                 "
@@ -97,7 +154,7 @@ import {
                 bg-white
                 rounded-xl
                 shadow-md
-                hover:shadow-xl
+                hover:bg-white/90
                 hover:-translate-y-1
                 transition-all
                 "
@@ -113,9 +170,9 @@ import {
             </div>
 
             {/* Línea divisoria */}
-            <div className="border-t border-primary/10 pt-8">
+            <div className="border-t border-white/10 pt-8">
 
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-white/60">
                 © 2026 Dr. Eduardo Argüello · Todos los derechos reservados
             </p>
 

@@ -86,22 +86,45 @@ const Hero = ({ onOpenContact }: Props) => {
             y enfocados en potenciar tu belleza natural.
           </p>
 
-          <a
-            href="#about"
-            className="
-              inline-flex
-              bg-primary
-              text-white
-              px-6
-              py-3
-              rounded-xl
-              shadow-lg
-              hover:scale-105
-              transition
-            "
-          >
-            Conocé mi trayectoria
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <button
+              onClick={onOpenContact}
+              className="
+                inline-flex
+                justify-center
+                bg-primary
+                text-white
+                px-6
+                py-3
+                rounded-xl
+                shadow-lg
+                hover:scale-105
+                transition
+              "
+            >
+              Solicitar consulta
+            </button>
+
+            <a
+              href="#about"
+              className="
+                inline-flex
+                justify-center
+                border
+                border-primary
+                text-primary
+                px-6
+                py-3
+                rounded-xl
+                font-medium
+                hover:bg-primary
+                hover:text-white
+                transition
+              "
+            >
+              Conocé mi trayectoria
+            </a>
+          </div>
         </motion.div>
 
         {/* Imagen */}
