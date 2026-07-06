@@ -36,27 +36,31 @@ const Producers = () => {
               <SwiperSlide key={proc.id}>
                 <Link
                   to={`/procedimientos/${proc.slug}`}
-                  className="block h-full"
+                  className="group block h-full"
                 >
-                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-primary/10 h-full flex flex-col">
                     <img
                       src={proc.image}
                       alt={proc.title}
-                      className="w-full h-64 object-cover"
+                      className="w-full h-64 object-cover bg-soft"
                     />
 
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold mb-3 text-dark">
+                    <div className="p-6 flex flex-col flex-1">
+                      <span className="text-xs font-semibold tracking-widest uppercase text-primary/70">
+                        Tratamiento estético
+                      </span>
+
+                      <h3 className="text-xl font-semibold mt-3 mb-3 text-dark">
                         {proc.title}
                       </h3>
 
-                      <p className="text-gray-600 text-sm leading-relaxed">
+                      <p className="text-gray-600 text-sm leading-relaxed flex-1">
                         {proc.description}
                       </p>
 
-                      <button className="mt-5 bg-primary text-white px-5 py-2 rounded-full hover:opacity-90 transition">
+                      <span className="mt-5 bg-primary text-white px-5 py-2 rounded-full text-center font-medium group-hover:bg-[#062F2C] transition">
                         Ver más
-                      </button>
+                      </span>
                     </div>
                   </div>
                 </Link>

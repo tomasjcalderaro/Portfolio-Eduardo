@@ -57,9 +57,11 @@ const Procedures = () => {
                 <Link
                     key={proc.id}
                     to={`/procedimientos/${proc.slug}`}
+                    className="group block h-full"
                 >
                     <div
                     className="
+                        h-full
                         bg-white
                         rounded-3xl
                         overflow-hidden
@@ -70,32 +72,36 @@ const Procedures = () => {
                         duration-300
                         border
                         border-primary/10
+                        flex
+                        flex-col
                     "
                     >
-                        //Imagen del procedimiento
                     <img
                         src={proc.image}
                         alt={proc.title}
                         className="
                         w-full
-                        h-72
-                        object-contain
-                        bg-white
+                        h-64
+                        md:h-72
+                        object-cover
+                        bg-soft
                         "
                     />
 
-                    //Contenido del procedimiento
-                    <div className="p-6">
-                        <h2 className="text-2xl font-bold mb-3">
+                    <div className="p-6 flex flex-col flex-1">
+                        <span className="text-xs font-semibold tracking-widest uppercase text-primary/70">
+                        Tratamiento estético
+                        </span>
+
+                        <h2 className="text-2xl font-bold mt-3 mb-3 text-dark">
                         {proc.title}
                         </h2>
 
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 leading-relaxed flex-1">
                         {proc.description}
                         </p>
 
-                        //Botón para ver más detalles del procedimiento
-                        <button
+                        <span
                         className="
                             mt-6
                             w-full
@@ -104,12 +110,13 @@ const Procedures = () => {
                             bg-primary
                             text-white
                             font-medium
-                            hover:opacity-90
+                            text-center
+                            group-hover:bg-[#062F2C]
                             transition
                         "
                         >
                         Ver tratamiento
-                        </button>
+                        </span>
                     </div>
                     </div>
                 </Link>
