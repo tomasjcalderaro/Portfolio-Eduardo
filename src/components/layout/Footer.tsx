@@ -30,20 +30,7 @@ import {
             py-20
             "
         >
-            {/* Logo y descripción */}
-            <div className="mb-12">
-            <h3 className="text-3xl font-bold text-white">
-                Dr. Eduardo Argüello
-            </h3>
-
-            <p className="text-white/70 mt-4 max-w-xl leading-relaxed">
-                Medicina estética avanzada, tratamientos
-                personalizados y atención profesional
-                orientada a resultados naturales y armónicos.
-            </p>
-            </div>
-
-            {/* Ubicación */}
+            {/* Presentación y mapa */}
             <div
             className="
                 grid
@@ -55,24 +42,19 @@ import {
             >
             <div
                 className="
-                rounded-2xl
-                border
-                border-white/10
-                bg-white/5
-                p-6
+                flex
+                flex-col
+                justify-center
                 "
             >
-                <h4 className="text-xl font-semibold text-white">
-                Ubicación
-                </h4>
+                <h3 className="text-3xl font-bold text-white">
+                    Dr. Eduardo Argüello
+                </h3>
 
-                <p className="text-white/70 mt-2 leading-relaxed">
-                {address}
-                </p>
-
-                <p className="text-white/60 mt-4 leading-relaxed">
-                Atención personalizada en Santa Fe. Podés ubicar el consultorio
-                desde el mapa y abrirlo directamente para ver el recorrido.
+                <p className="text-white/70 mt-4 max-w-xl leading-relaxed">
+                    Medicina estética avanzada, tratamientos
+                    personalizados y atención profesional
+                    orientada a resultados naturales y armónicos.
                 </p>
             </div>
 
