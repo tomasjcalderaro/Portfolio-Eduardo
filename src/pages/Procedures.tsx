@@ -1,16 +1,41 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabase";
+
+import labiosImg from "../assets/images/labios.jpg";
 
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import Modal from "../components/ui/Modal";
 
-import { producers } from "../data/producers";
-
 import ContactSection from "../components/forms/ContactSection";
 
 const Procedures = () => {
     const [openContact, setOpenContact] = useState(false);
+
+    const [procedures, setProcedures] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+    const getProcedures = async () => {
+        const { data, error } = await supabase
+        .from("procedures")
+        .select("*")
+        .eq("is_active", true)
+        .order("id");
+
+        if (error) {
+        console.error("Error al obtener procedimientos:", error);
+        } else {
+        console.log("Procedimientos obtenidos desde Supabase:", data);
+        setProcedures(data);
+        }
+
+        setLoading(false);
+    };
+
+    getProcedures();
+}, []);
 
     return (
     <>
@@ -52,11 +77,18 @@ const Procedures = () => {
             </section>
 
             <section className="max-w-7xl mx-auto">
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {   producers.map((proc) => (
+                    {loading ? (
+                        <div className="text-center py-20">
+                        <p className="text-gray-600 text-lg">
+                            Cargando procedimientos...
+                        </p>
+                        </div>
+                    ) : (
+                        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        {procedures.map((proc) => (
                 <Link
                     key={proc.id}
-                    to={`/procedimientos/${proc.slug}`}
+                    to={`/procedimientos/${proc.id}`}
                     className="group block h-full"
                 >
                     <div
@@ -77,8 +109,8 @@ const Procedures = () => {
                     "
                     >
                     <img
-                        src={proc.image}
-                        alt={proc.title}
+                        src={proc.image_url || labiosImg}
+                        alt={proc.name}
                         className="
                         w-full
                         h-64
@@ -94,7 +126,7 @@ const Procedures = () => {
                         </span>
 
                         <h2 className="text-2xl font-bold mt-3 mb-3 text-dark">
-                        {proc.title}
+                        {proc.name}
                         </h2>
 
                         <p className="text-gray-600 leading-relaxed flex-1">
@@ -120,8 +152,9 @@ const Procedures = () => {
                     </div>
                     </div>
                 </Link>
-                ))}
-            </div>
+                    ))}
+                </div>
+                )}
             </section>
         </main>
 
