@@ -44,6 +44,7 @@ const AdminPanel = () => {
 
     return (
         <main className="min-h-screen bg-gradient-to-b from-white via-soft to-white">
+
         {/* Encabezado */}
         <header className="bg-white border-b border-primary/10 shadow-sm">
             <div
@@ -62,6 +63,7 @@ const AdminPanel = () => {
                 sm:justify-between
             "
             >
+            {/* Título */}
             <div className="text-center sm:text-left">
                 <p className="text-primary text-xs sm:text-sm font-medium tracking-widest uppercase">
                 Administración
@@ -72,25 +74,53 @@ const AdminPanel = () => {
                 </h1>
             </div>
 
-            <button
+            {/* Acciones */}
+            <div className="flex flex-col sm:flex-row gap-3">
+
+                {/* Ver sitio */}
+                <Link
+                to="/"
+                className="
+                    w-full
+                    sm:w-auto
+                    text-center
+                    border
+                    border-primary
+                    text-primary
+                    px-5
+                    py-3
+                    rounded-xl
+                    font-medium
+                    transition
+                    hover:bg-primary
+                    hover:text-white
+                "
+                >
+                Ver sitio
+                </Link>
+
+                {/* Cerrar sesión */}
+                <button
                 onClick={handleLogout}
                 className="
-                w-full
-                sm:w-auto
-                border
-                border-primary
-                text-primary
-                px-5
-                py-3
-                rounded-xl
-                font-medium
-                transition
-                hover:bg-primary
-                hover:text-white
+                    w-full
+                    sm:w-auto
+                    border
+                    border-primary
+                    text-primary
+                    px-5
+                    py-3
+                    rounded-xl
+                    font-medium
+                    transition
+                    hover:bg-primary
+                    hover:text-white
                 "
-            >
+                >
                 Cerrar sesión
-            </button>
+                </button>
+
+            </div>
             </div>
         </header>
 
@@ -106,6 +136,7 @@ const AdminPanel = () => {
             sm:py-10
             "
         >
+
             {/* Información del administrador */}
             <div
             className="
@@ -143,6 +174,7 @@ const AdminPanel = () => {
                 xl:grid-cols-4
             "
             >
+
             {/* Turnos */}
             <article
                 className="
@@ -260,6 +292,7 @@ const AdminPanel = () => {
                 Configurá días, horarios y excepciones.
                 </p>
             </article>
+
             </div>
         </section>
         </main>
