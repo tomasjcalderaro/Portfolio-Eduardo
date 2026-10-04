@@ -8,3 +8,6 @@ html {
 section[id] {
     scroll-margin-top: 5rem;
 }
+:root {
+    --swiper-theme-color: #0d4b46;
+}
