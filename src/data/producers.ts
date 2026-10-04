@@ -1,6 +1,6 @@
-import labiosImg from "../assets/images/labios.jpg";
-import narizImg from "../assets/images/nariz.jpg";
-import ojerasImg from "../assets/images/ojeras.jpg";
+import labiosImg from "../assets/images/labios.webp";
+import narizImg from "../assets/images/nariz.webp";
+import ojerasImg from "../assets/images/ojeras.webp";
 
 export const producers = [
   {

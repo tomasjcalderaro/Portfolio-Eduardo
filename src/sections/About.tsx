@@ -1,4 +1,4 @@
-import heroDoctor from "../assets/images/hero-doctor.jpg";
+import heroDoctor from "../assets/images/hero-doctor.webp";
 
 const About = () => {
     return (

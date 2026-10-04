@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroDoctor2 from "../assets/images/hero-doctor2.jpg";
+import heroDoctor2 from "../assets/images/hero-doctor2.webp";
 
 type Props = {
   onOpenContact: () => void;

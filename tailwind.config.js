@@ -9,8 +9,9 @@ export default {
       colors: {
         primary: "#0D4B46",
         secondary: "#062F2C",
-        soft: "#F5F8F7" ,
+        soft: "#F5F8F7",
         dark: "#1A1A1A",
+        accent: "#C9A87C",
       },
     },
   },

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { supabase } from "../lib/supabase";
 
-import labiosImg from "../assets/images/labios.jpg";
+import labiosImg from "../assets/images/labios.webp";
 
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";

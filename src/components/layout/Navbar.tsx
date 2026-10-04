@@ -1,208 +1,165 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  FaBars,
-  FaTimes,
-  FaUser,
-} from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 type Props = {
   onOpenContact?: () => void;
 };
 
+const links = [
+  { label: "Inicio", to: "/#home" },
+  { label: "Sobre mí", to: "/#about" },
+  { label: "Trayectoria", to: "/#education" },
+  { label: "Procedimientos", to: "/procedimientos" },
+];
+
+const linkClass = `
+  relative
+  text-white/80
+  hover:text-white
+  transition
+  after:absolute
+  after:left-0
+  after:-bottom-1
+  after:h-px
+  after:w-0
+  after:bg-accent
+  after:transition-all
+  hover:after:w-full
+`;
+
 const Navbar = ({ onOpenContact }: Props) => {
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const isHome = location.pathname === "/";
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleContact = () => {
+    onOpenContact?.();
+    setOpen(false);
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#062F2C] shadow-lg">
-
-      {/* Navbar principal */}
+    <nav
+      className={`
+        fixed top-0 left-0 right-0 z-50
+        bg-secondary
+        transition-shadow duration-300
+        ${scrolled ? "shadow-lg" : ""}
+      `}
+    >
       <div
-        className="
-          max-w-7xl
-          mx-auto
-          px-4
-          sm:px-6
-          lg:px-8
-          h-20
-          flex
-          items-center
-          justify-between
-        "
+        className={`
+          max-w-7xl mx-auto
+          px-4 sm:px-6 lg:px-8
+          flex items-center justify-between
+          transition-all duration-300
+          ${scrolled ? "h-16" : "h-20"}
+        `}
       >
-
         {/* Logo */}
-        <Link
-          to="/"
-          className="block"
-        >
-          <h1 className="text-xl font-bold text-white">
+        <Link to="/#home" className="block">
+          <span className="block text-xl font-bold text-white">
             Dr. Eduardo Argüello
-          </h1>
+          </span>
 
-          <p className="text-xs text-white/70">
+          <span className="block text-xs tracking-widest uppercase text-accent">
             Medicina Estética
-          </p>
+          </span>
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8 text-white">
-
-          {isHome ? (
-            <a
-              href="#home"
-              className="hover:text-primary transition"
-            >
-              Inicio
-            </a>
-          ) : (
+        <div className="hidden md:flex items-center gap-8">
+          {links.map((link) => (
             <Link
-              to="/"
-              className="hover:text-primary transition"
+              key={link.label}
+              to={link.to}
+              className={`
+                ${linkClass}
+                ${
+                  link.to === "/procedimientos" &&
+                  pathname.startsWith("/procedimientos")
+                    ? "text-white after:w-full"
+                    : ""
+                }
+              `}
             >
-              Inicio
+              {link.label}
             </Link>
-          )}
-
-          <Link
-            to="/procedimientos"
-            className="hover:text-primary transition"
-          >
-            Procedimientos
-          </Link>
+          ))}
 
           <button
-            onClick={() => onOpenContact?.()}
-            className="hover:text-primary transition"
-          >
-            Contacto
-          </button>
-
-          {/* Acceso administrativo */}
-          <Link
-            to="/admin"
-            aria-label="Acceso administrativo"
-            title="Acceso administrativo"
+            onClick={handleContact}
             className="
-              flex
-              items-center
-              justify-center
-              w-9
-              h-9
+              bg-accent
+              text-secondary
+              font-semibold
+              px-5
+              py-2
               rounded-full
-              border
-              border-white/30
-              text-white
-              hover:bg-primary
-              hover:border-primary
+              hover:brightness-110
               transition
             "
           >
-            <FaUser size={15} />
-          </Link>
-
+            Solicitar consulta
+          </button>
         </div>
 
-        {/* Mobile Button */}
+        {/* Botón mobile */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden text-white"
-          aria-label={
-            open
-              ? "Cerrar menú"
-              : "Abrir menú"
-          }
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
-          {open ? (
-            <FaTimes size={24} />
-          ) : (
-            <FaBars size={24} />
-          )}
+          {open ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
-
       </div>
 
-      {/* Mobile Menu */}
+      {/* Menú mobile */}
       {open && (
         <div
-          className="
-            md:hidden
-            bg-[#062F2C]
-            border-t
-            border-white/10
-          "
+          id="mobile-menu"
+          className="md:hidden bg-secondary border-t border-white/10"
         >
-
-          <div
-            className="
-              flex
-              flex-col
-              px-6
-              py-6
-              gap-6
-              text-white
-            "
-          >
-
-            {isHome ? (
-              <a
-                href="#home"
-                onClick={() => setOpen(false)}
-              >
-                Inicio
-              </a>
-            ) : (
+          <div className="flex flex-col px-6 py-6 gap-5 text-white">
+            {links.map((link) => (
               <Link
-                to="/"
+                key={link.label}
+                to={link.to}
                 onClick={() => setOpen(false)}
+                className="text-white/90 hover:text-accent transition"
               >
-                Inicio
+                {link.label}
               </Link>
-            )}
-
-            <Link
-              to="/procedimientos"
-              onClick={() => setOpen(false)}
-            >
-              Procedimientos
-            </Link>
+            ))}
 
             <button
-              onClick={() => {
-                onOpenContact?.();
-                setOpen(false);
-              }}
-              className="text-left"
-            >
-              Contacto
-            </button>
-
-            {/* Acceso administrativo mobile */}
-            <Link
-              to="/admin"
-              onClick={() => setOpen(false)}
+              onClick={handleContact}
               className="
-                flex
-                items-center
-                gap-3
+                mt-2
+                bg-accent
+                text-secondary
+                font-semibold
+                py-3
+                rounded-full
               "
             >
-              <FaUser size={16} />
-
-              <span>
-                Acceso administrativo
-              </span>
-            </Link>
-
+              Solicitar consulta
+            </button>
           </div>
-
         </div>
       )}
-
     </nav>
   );
 };
