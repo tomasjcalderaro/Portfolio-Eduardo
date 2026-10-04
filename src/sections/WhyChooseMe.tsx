@@ -36,7 +36,7 @@ import {
     return (
         <section
         id="why"
-        className="py-24 bg-soft"
+        className="py-24 bg-white"
         >
         <div className="max-w-7xl mx-auto px-6">
 

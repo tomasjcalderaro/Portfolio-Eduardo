@@ -12,8 +12,7 @@ import ContactSection from "../components/forms/ContactSection";
 //sections 
 import Hero from "../sections/Hero";
 import About from "../sections/About";
-import Education from "../sections/Education";
-import Experience from "../sections/Experience";
+import Trajectory from "../sections/Trajectory";
 import WhyChooseMe from "../sections/WhyChooseMe";
 import Producers from "../sections/Producers";
 
@@ -39,11 +38,7 @@ const Home = () => {
             </FadeInSection>
 
             <FadeInSection>
-            <Education />
-            </FadeInSection>
-
-            <FadeInSection>
-            <Experience />
+            <Trajectory />
             </FadeInSection>
 
             <FadeInSection>

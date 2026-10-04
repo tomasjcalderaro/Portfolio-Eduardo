@@ -9,7 +9,7 @@ type Props = {
 const links = [
   { label: "Inicio", to: "/#home" },
   { label: "Sobre mí", to: "/#about" },
-  { label: "Trayectoria", to: "/#education" },
+  { label: "Trayectoria", to: "/#trajectory" },
   { label: "Procedimientos", to: "/procedimientos" },
 ];
 
