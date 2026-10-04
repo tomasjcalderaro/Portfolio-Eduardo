@@ -1,163 +1,168 @@
+import { Link } from "react-router-dom";
+import { FaInstagram, FaWhatsapp, FaMapMarkerAlt } from "react-icons/fa";
+
 import {
-    FaInstagram,
-    FaWhatsapp,
-    FaEnvelope,
-    } from "react-icons/fa";
+    ADDRESS,
+    INSTAGRAM_URL,
+    mapsEmbedUrl,
+    mapsLinkUrl,
+    whatsappUrl,
+    } from "../../lib/contact";
 
     type Props = {
     onOpenContact?: () => void;
     };
 
-    const address = "Chacabuco 1289, Santa Fe, Santa Fe";
-    const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+    const navLinks = [
+    { label: "Inicio", to: "/#home" },
+    { label: "Sobre mí", to: "/#about" },
+    { label: "Trayectoria", to: "/#trajectory" },
+    { label: "Procedimientos", to: "/procedimientos" },
+    ];
+
+    const headingClass =
+    "text-sm uppercase tracking-widest text-accent font-medium mb-5";
+
+    const socialClass = `
+    flex
+    items-center
+    justify-center
+    w-11
+    h-11
+    rounded-full
+    border
+    border-white/20
+    text-white
+    hover:bg-accent
+    hover:text-secondary
+    hover:border-accent
+    transition
+    `;
 
     const Footer = ({ onOpenContact }: Props) => {
     return (
-        <footer
-        className="
-            mt-24
-            bg-[#062F2C]
-            backdrop-blur-md
-            border-t
-            border-white/10
-        "
-        >
-        <div
-            className="
-            max-w-7xl
-            mx-auto
-            px-6
-            py-20
-            "
-        >
-            {/* Presentación y mapa */}
-            <div
-            className="
-                grid
-                gap-6
-                lg:grid-cols-[1fr_0.85fr]
-                items-stretch
-                mb-12
-            "
-            >
-            <div
-                className="
-                flex
-                flex-col
-                justify-center
-                "
-            >
-                <h3 className="text-3xl font-bold text-white">
-                    Dr. Eduardo Argüello
+        <footer className="bg-secondary">
+        <div className="max-w-7xl mx-auto px-6 py-20">
+            <div className="grid gap-12 lg:grid-cols-3">
+            {/* Marca */}
+            <div>
+                <h3 className="text-2xl font-bold text-white">
+                Dr. Eduardo Argüello
                 </h3>
 
-                <p className="text-white/70 mt-4 max-w-xl leading-relaxed">
-                    Medicina estética avanzada, tratamientos
-                    personalizados y atención profesional
-                    orientada a resultados naturales y armónicos.
+                <p className="text-white/70 mt-4 leading-relaxed max-w-sm">
+                Medicina estética avanzada, tratamientos personalizados y
+                atención profesional orientada a resultados naturales y
+                armónicos.
                 </p>
+
+                <div className="flex gap-3 mt-8">
+                <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram del Dr. Argüello"
+                    className={socialClass}
+                >
+                    <FaInstagram size={20} />
+                </a>
+
+                <a
+                    href={whatsappUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp del Dr. Argüello"
+                    className={socialClass}
+                >
+                    <FaWhatsapp size={20} />
+                </a>
+                </div>
             </div>
 
-            <div
-                className="
-                overflow-hidden
-                rounded-2xl
-                border
-                border-white/10
-                bg-white/10
-                min-h-[220px]
-                sm:min-h-[260px]
-                "
-            >
-                <iframe
-                title="Mapa de ubicación - Dr. Eduardo Argüello"
-                src={mapsEmbedUrl}
-                className="w-full h-full min-h-[220px] sm:min-h-[260px]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                />
-            </div>
-            </div>
+            {/* Navegación */}
+            <div>
+                <h4 className={headingClass}>Navegación</h4>
 
-            {/* Redes */}
-            <div className="flex flex-wrap gap-6 mb-12">
+                <ul className="space-y-3">
+                {navLinks.map((link) => (
+                    <li key={link.label}>
+                    <Link
+                        to={link.to}
+                        className="text-white/70 hover:text-white transition"
+                    >
+                        {link.label}
+                    </Link>
+                    </li>
+                ))}
+                </ul>
 
-            <a
-                href="https://www.instagram.com/eduardoarguello.dr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                flex items-center gap-3
-                px-5 py-3
-                bg-white
-                rounded-xl
-                shadow-md
-                hover:bg-white/90
-                hover:-translate-y-1
-                transition-all
-                "
-            >
-                <FaInstagram
-                size={20}
-                className="text-primary"
-                />
-
-                <span>Instagram</span>
-            </a>
-
-            <a
-                href="https://wa.me/5493425454106"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                flex items-center gap-3
-                px-5 py-3
-                bg-white
-                rounded-xl
-                shadow-md
-                hover:bg-white/90
-                hover:-translate-y-1
-                transition-all
-                "
-            >
-                <FaWhatsapp
-                size={20}
-                className="text-primary"
-                />
-
-                <span>WhatsApp</span>
-            </a>
-
-            <button
+                <button
                 onClick={() => onOpenContact?.()}
                 className="
-                flex items-center gap-3
-                px-5 py-3
-                bg-white
-                rounded-xl
-                shadow-md
-                hover:bg-white/90
-                hover:-translate-y-1
-                transition-all
+                    mt-8
+                    bg-accent
+                    text-secondary
+                    font-semibold
+                    px-6
+                    py-3
+                    rounded-full
+                    hover:brightness-110
+                    transition
                 "
-            >
-                <FaEnvelope
-                size={20}
-                className="text-primary"
-                />
-
-                <span>Contacto</span>
-            </button>
-
+                >
+                Solicitar consulta
+                </button>
             </div>
 
-            {/* Línea divisoria */}
-            <div className="border-t border-white/10 pt-8">
+            {/* Ubicación */}
+            <div>
+                <h4 className={headingClass}>Ubicación</h4>
 
+                <a
+                href={mapsLinkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                    flex
+                    items-start
+                    gap-3
+                    text-white/70
+                    hover:text-white
+                    transition
+                "
+                >
+                <FaMapMarkerAlt className="mt-1 shrink-0 text-accent" />
+                <span>{ADDRESS}</span>
+                </a>
+
+                <div
+                className="
+                    mt-5
+                    overflow-hidden
+                    rounded-2xl
+                    border
+                    border-white/10
+                    bg-white/10
+                    h-48
+                "
+                >
+                <iframe
+                    title="Mapa de ubicación - Dr. Eduardo Argüello"
+                    src={mapsEmbedUrl}
+                    className="w-full h-full grayscale hover:grayscale-0 transition duration-500"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                />
+                </div>
+            </div>
+            </div>
+
+            {/* Línea inferior */}
+            <div className="border-t border-white/10 mt-14 pt-8">
             <p className="text-sm text-white/60">
-                © 2026 Dr. Eduardo Argüello · Todos los derechos reservados
+                © {new Date().getFullYear()} Dr. Eduardo Argüello · Todos los
+                derechos reservados
             </p>
-
             </div>
         </div>
         </footer>

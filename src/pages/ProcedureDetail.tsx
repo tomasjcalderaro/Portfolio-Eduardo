@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { supabase } from "../lib/supabase";
+import { whatsappUrl } from "../lib/contact";
 
 import labiosImg from "../assets/images/labios.webp";
 
@@ -206,7 +207,7 @@ interface Procedure {
             {/* Botón contacto */}
             <div className="mt-12 text-center">
                 <a
-                href="https://wa.me/5493425454106"
+                href={whatsappUrl(`Hola Dr. Argüello, quisiera consultar por ${procedure.name}.`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="

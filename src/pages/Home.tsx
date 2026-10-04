@@ -5,7 +5,7 @@ import Footer from "../components/layout/Footer";
 //ui
 import Modal from "../components/ui/Modal";
 import WhatsappButton from "../components/ui/WhatsappButton";
-import InstagramButton from "../components/ui/InstagramButton";
+import { INSTAGRAM_URL, whatsappUrl } from "../lib/contact";
 import FadeInSection from "../components/ui/FadeInSection";
 
 import ContactSection from "../components/forms/ContactSection";
@@ -53,7 +53,6 @@ const Home = () => {
                 onOpenContact={() => setOpenContact(true)}
             />
 
-            <InstagramButton />
             <WhatsappButton />
 
         </div>
@@ -79,7 +78,7 @@ const Home = () => {
                 <div className="mt-8 flex justify-center gap-4">
 
                 <a
-                    href="https://wa.me/5493425454106"
+                    href={whatsappUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
@@ -97,7 +96,7 @@ const Home = () => {
                 </a>
 
                 <a
-                    href="https://www.instagram.com/eduardoarguello.dr/"
+                    href={INSTAGRAM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
