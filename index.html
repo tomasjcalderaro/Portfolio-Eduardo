@@ -10,6 +10,7 @@
       content="Dr. Eduardo Argüello, médico especializado en medicina estética, regenerativa y funcional en Santa Fe. Tratamientos personalizados con resultados naturales."
     />
     <meta name="theme-color" content="#0D4B46" />
+    <link rel="canonical" href="https://portfolio-eduardo-eta.vercel.app/" />
 
     <!-- Favicon provisorio: iniciales "EA" sobre el verde de la marca -->
     <link
@@ -28,12 +29,37 @@
       content="Tratamientos personalizados de medicina estética, regenerativa y funcional con resultados naturales."
     />
     <meta property="og:url" content="https://portfolio-eduardo-eta.vercel.app/" />
-    <!-- Cuando tengamos la imagen (1200x630), descomentar:
     <meta property="og:image" content="https://portfolio-eduardo-eta.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Dr. Eduardo Argüello, médico especializado en medicina estética" />
     <meta name="twitter:card" content="summary_large_image" />
-    -->
+
+    <!-- Datos estructurados para Google -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Physician",
+        "name": "Dr. Eduardo Argüello",
+        "description": "Médico especializado en medicina estética, regenerativa y funcional.",
+        "url": "https://portfolio-eduardo-eta.vercel.app/",
+        "image": "https://portfolio-eduardo-eta.vercel.app/og-image.jpg",
+        "telephone": "+5493425454106",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Chacabuco 1289",
+          "addressLocality": "Santa Fe",
+          "addressRegion": "Santa Fe",
+          "addressCountry": "AR"
+        },
+        "sameAs": ["https://www.instagram.com/eduardoarguello.dr/"]
+      }
+    </script>
   </head>
   <body>
+    <noscript>
+      Para ver este sitio necesitás activar JavaScript en tu navegador.
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
