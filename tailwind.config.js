@@ -13,6 +13,10 @@ export default {
         dark: "#1A1A1A",
         accent: "#E9DCC9",
       },
+      fontFamily: {
+        sans: ['"Inter Variable"', "system-ui", "sans-serif"],
+        serif: ['"Playfair Display Variable"', "Georgia", "serif"],
+      },
     },
   },
   plugins: [],

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaUser } from "react-icons/fa";
 
 type Props = {
   onOpenContact?: () => void;
@@ -68,7 +68,7 @@ const Navbar = ({ onOpenContact }: Props) => {
       >
         {/* Logo */}
         <Link to="/#home" className="block">
-          <span className="block text-xl font-bold text-white">
+          <span className="block text-xl font-bold text-white font-serif">
             Dr. Eduardo Argüello
           </span>
 
@@ -112,6 +112,30 @@ const Navbar = ({ onOpenContact }: Props) => {
           >
             Solicitar consulta
           </button>
+
+          {/* Acceso administrativo */}
+          <Link
+            to="/admin"
+            aria-label="Acceso administrativo"
+            title="Acceso administrativo"
+            className="
+              flex
+              items-center
+              justify-center
+              w-9
+              h-9
+              rounded-full
+              border
+              border-white/30
+              text-white/80
+              hover:bg-accent
+              hover:text-secondary
+              hover:border-accent
+              transition
+            "
+          >
+            <FaUser size={15} />
+          </Link>
         </div>
 
         {/* Botón mobile */}
@@ -157,6 +181,24 @@ const Navbar = ({ onOpenContact }: Props) => {
             >
               Solicitar consulta
             </button>
+
+            {/* Acceso administrativo */}
+            <Link
+              to="/admin"
+              onClick={() => setOpen(false)}
+              className="
+                flex
+                items-center
+                justify-center
+                gap-3
+                text-white/70
+                hover:text-accent
+                transition
+              "
+            >
+              <FaUser size={16} />
+              <span>Acceso administrativo</span>
+            </Link>
           </div>
         </div>
       )}

@@ -11,3 +11,10 @@ section[id] {
 :root {
     --swiper-theme-color: #0d4b46;
 }
+@layer base {
+    h1,
+    h2,
+    h3 {
+        font-family: theme("fontFamily.serif");
+    }
+}
